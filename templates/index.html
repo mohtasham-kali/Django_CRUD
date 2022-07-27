@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch Data from Model</title>
+    <link rel="shortcut icon" href="/static/chota-logo2.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="/static/hello.css">
+</head>
+<body>
+    <h1>Students Records</h1> 
+    <table border="1" cellpadding="10" id="customers">
+        <tr>
+            <th> ID</th>
+            <th> FIRSTNAME </th>
+            <th> LASTNAME </th>
+            <th> EMAIL</th>
+            <th> OPERATIONS </th>
+        </tr>
+        {% for s in stds %}
+        <tr>
+            <td> {{s.id}} </td>
+            <td> {{s.firstName}} </td>
+            <td> {{s.lastName}} </td>
+            <td> {{s.email}} </td>
+            <td>
+
+
+                <a href='{% url 'update' s.id %}'>
+                
+                    <i class='fas fa-edit' style=margin-right:8px;color:blue'>
+                    </i>
+                </a>
+                
+
+                <a href='{% url 'delete' s.id %}'>
+                
+                    <i class='fas fa-trash-alt' style=margin-right:8px;color:blue'>
+                    </i>
+                </a>
+            </td>           
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <br>
+    <a href="{% url 'addStudent' %}" class="btnn">Insert New Student</a>
+    
+</body>
+</html>
